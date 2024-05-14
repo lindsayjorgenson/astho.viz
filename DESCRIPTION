@@ -1,12 +1,27 @@
 Package: astho.viz
-Title: ASTHO Data Visualization in Highcharts
+Title: Create Data Visualization in Highcharts using ASTHO Themes
 Version: 0.0.0.9000
 Authors@R: 
     person("Lindsay", "Jorgenson", , "ljorgenson@astho.org", role = c("aut", "cre"))
-Description: Build accessible {highcharter} visualizations themed for the Association of State and Territorial Health Officials (ASTHO). This packages currently can be used to create maps (with or without U.S. Territories and Freely Associated States), pie charts and bar graphs (cluster, drill, grouped, and regular).
+Description: Build accessible {highcharter} visualizations themed for the 
+    Association of State and Territorial Health Officials (ASTHO). 
+   This packages currently can be used to create maps (with or without 
+   U.S. Territories and Freely Associated States), pie charts and bar graphs 
+   (cluster, drill, grouped, and regular).
 License: file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 URL: https://github.com/lindsayjorgenson/astho.viz
 BugReports: https://github.com/lindsayjorgenson/astho.viz/issues
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Imports: 
+    custom.map,
+    dplyr,
+    highcharter,
+    magrittr
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
