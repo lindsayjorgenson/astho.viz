@@ -1,29 +1,21 @@
----
-output: github_document
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
 
 # astho.viz
 
 <!-- badges: start -->
-[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+
+[![Lifecycle:
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
-A data visualization package to generate themed, accessible highcharter visualizations using an ASTHO theme.
+A data visualization package to generate themed, accessible highcharter
+visualizations using an ASTHO theme.
 
 ## Installation
 
-You can install the development version of astho.viz from [GitHub](https://github.com/) with:
+You can install the development version of astho.viz from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -34,7 +26,7 @@ devtools::install_github("lindsayjorgenson/astho.viz")
 
 Create a categorical map.
 
-```{r example}
+``` r
 # library(astho.viz)
 # 
 # categorical_map(data = astho_governance,
@@ -60,5 +52,5 @@ Create a categorical map.
 
 ## Next
 
-We will soon add additional geographic maps, tile maps, bar charts, line graphs,
-and pie charts all customized with the ASTHO theme.
+We will soon add additional geographic maps, tile maps, bar charts, line
+graphs, and pie charts all customized with the ASTHO theme.
