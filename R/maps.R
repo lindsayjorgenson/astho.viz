@@ -1,8 +1,11 @@
+globalVariables(c("map_data", "data_classes", "map_data", "map_value", "value", "from", "map_type"))
+
 #' Create an accessible categorical map using the ASTHO theme in {highcharter}
 #'
 #' @param data the data frame to create the map.
 #' @param fips_column column of a dataframe with the Federal Information Processing System (FIPS) Codes for States and Counties, in quotes.
 #' @param selected_value column of a dataframe with the values to visualize in the map, in quotes.
+#' @param include_islands boolean, TRUE or FALSE, where FALSE removes island areas. Defaults to TRUE.
 #' @param my_colors vector; colors to supply to the map, as hex values.
 #' @param my_click JS function; use to add a click event, requires a JS function, JS(), Defaults to NA.
 #' @param title_text character string; title of the map.
@@ -19,7 +22,7 @@
 #'
 #' @examples
 #'
-#' map_all(data = astho_governance,
+#' categorical_map(data = astho_governance,
 #'       fips_column = "fips",
 #'        selected_value = "governance",
 #'        title_text = "Map of U.S. State and Island Area Public Health Agency Governance", # title
@@ -29,9 +32,11 @@
 #'        ASTHO Profile of State and Territorial Public Health, Volume Six. Arlington,
 #'        VA: Association of State and Territorial Health Officials. 2023.",
 #'       accessible_desc =
-#'       "This is a map of governance classification, with sost jurisdictions being
-#'       decentralized followed by centralized. Few jurisdictions are mixed. Enter the
-#'       map to review classification at the jurisdiction level.",
+#'       "This is a map of governance classification, with most
+#'       jurisdictions classified as decentralized followed by
+#'       centralized. Few jurisdictions have mixed or shared
+#'       governance. Enter the map to review classification at the
+#'       jurisdiction level.",
 #'       my_tooltip =
 #'       "<b>{point.JurisdictionName}</b><br>
 #'       <b>Agency Governance:</b>   {point.governance}<br>
@@ -41,21 +46,27 @@
 #'      )
 #'
 #'
-map_all <- function(data,
-                    fips_column,
-                    selected_value,
-                    my_colors = main_colors,
-                    my_click = NA,
-                    title_text,
-                    subtitle_text,
-                    caption_text,
-                    legend_text = NA,
-                    accessible_desc,
-                    my_tooltip = "{point.value}",
-                    my_reverse = FALSE,
-                    enable_legend = TRUE
+categorical_map <- function(data,
+                            fips_column,
+                            selected_value,
+                            include_islands = TRUE,
+                            my_colors = main_colors,
+                            my_click = NA,
+                            title_text,
+                            subtitle_text,
+                            caption_text,
+                            legend_text = NA,
+                            accessible_desc,
+                            my_tooltip = "{point.value}",
+                            my_reverse = FALSE,
+                            enable_legend = TRUE
 ) {
 
+  if (include_islands == TRUE) {
+    map_type <- "c"
+  } else {
+    map_type <- "b"
+  }
 
   map_data <- data %>%
     dplyr::rename(fips = fips_column) %>%
@@ -90,7 +101,7 @@ map_all <- function(data,
       data = map_data,
       value = selected_value,
       joinBy = "fips",
-      mapType = "c",
+      mapType = map_type,
       borderColor = "#020202",
       borderWidth = .25,
       dataLabels = list(

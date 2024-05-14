@@ -1,3 +1,6 @@
-test_that("map_all works", {
-  expect_true(is.function(map_all))
+test_that("categorical_map works", {
+  expect_true(is.function(categorical_map))
+
 })
+
+
